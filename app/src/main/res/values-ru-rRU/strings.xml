@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Финансовый калькулятор</string>
+    <string name="res_overflow">Переполнение результата!</string>
+    <string name="input_overflow">Ошибка ввода: переполнение!</string>
+    <string name="input_err">Ошибка ввода!</string>
+    <string name="input_empty">Ошибка ввода: пустое поле/поля!</string>
+    <string name="arg1_hint">Введите первое число</string>
+    <string name="arg2_hint">Введите второе число</string>
+    <string name="result_hint">Результат будет здесь</string>
+    <string name="err_div_by_zero">Деление на ноль!</string>
+</resources>
