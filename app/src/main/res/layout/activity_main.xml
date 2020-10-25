@@ -1,76 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:paddingRight="16dp"
+        android:stretchColumns="*">
 
-        <EditText
-            android:id="@+id/edtArg1"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:digits="-+0123456789., "
-            android:ems="10"
-            android:hint="@string/arg1_hint"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal|numberSigned"
-            android:textSize="30sp" />
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/edtArg2"
+            <EditText
+                android:id="@+id/edtArg1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="-+0123456789., "
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal|numberSigned"
+                android:text="@string/edt_default"
+                android:textSize="30sp"
+                tools:ignore="LabelFor" />
+
+            <Spinner
+                android:id="@+id/spOps1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/operations"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/edtArg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="-+0123456789., "
+                android:importantForAutofill="no"
+
+                android:inputType="numberDecimal|numberSigned"
+                android:text="@string/edt_default"
+                android:textSize="30sp"
+                tools:ignore="LabelFor" />
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:digits="-+0123456789., "
-            android:ems="10"
-            android:hint="@string/arg2_hint"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal|numberSigned"
-            android:textSize="30sp" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/twAnswer"
+            <Spinner
+                android:id="@+id/spOps2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                android:entries="@array/operations"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:text="@string/result_hint"
-            android:textSize="30sp" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnAdd"
-            style="@style/Widget.AppCompat.Button.Colored"
+            <EditText
+                android:id="@+id/edtArg3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="-+0123456789., "
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal|numberSigned"
+                android:text="@string/edt_default"
+                android:textSize="30sp"
+                tools:ignore="LabelFor" />
+
+            <Spinner
+                android:id="@+id/spOps3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/operations"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/edtArg4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="-+0123456789., "
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal|numberSigned"
+                android:text="@string/edt_default"
+                android:textSize="30sp"
+                tools:ignore="LabelFor" />
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_add_text" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnSub"
-            style="@style/Widget.AppCompat.Button.Colored"
+            <Spinner
+                android:id="@+id/spRounding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                android:entries="@array/rounding_mode"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_sub_text" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnMul"
-            style="@style/Widget.AppCompat.Button.Colored"
+            <TextView
+                android:id="@+id/twAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                android:layout_weight="1"
+                android:text="@string/result_hint"
+                android:textSize="30sp" />
+        </TableRow>
+
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_mul_text" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnDiv"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_div_text" />
-
+            <Button
+                android:id="@+id/btnRes"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                android:text="@string/btn_res_text" />
+        </TableRow>
 
         <TextView
             android:id="@+id/twDevName"
@@ -91,5 +155,5 @@
             android:textAlignment="center"
             android:textSize="17sp" />
 
-    </LinearLayout>
+    </TableLayout>
 </ScrollView>

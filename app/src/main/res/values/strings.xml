@@ -8,10 +8,17 @@
     <string name="info_contact" translatable="false">3 курс, 12 группа\n2020\nmaliaukas@gmail.com</string>
     <string name="arg1_hint">Enter the first number</string>
     <string name="arg2_hint">Enter the second number</string>
+    <string name="arg3_hint">Enter the third number</string>
+    <string name="arg4_hint">Enter the fourth number</string>
     <string name="result_hint">The result will appear here</string>
     <string name="btn_add_text" translatable="false">+</string>
     <string name="btn_sub_text" translatable="false">-</string>
     <string name="btn_mul_text" translatable="false">*</string>
     <string name="btn_div_text" translatable="false">/</string>
     <string name="err_div_by_zero">Division by zero!</string>
+    <string name="btn_res_text" translatable="false">=</string>
+    <string name="edt_default" translatable="false">0</string>
+    <string name="round_math">Mathematical rounding</string>
+    <string name="round_half_even">Half-to-even rounding</string>
+    <string name="round_down">Down rounding</string>
 </resources>

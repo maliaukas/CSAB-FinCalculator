@@ -9,4 +9,9 @@
     <string name="arg2_hint">Введите второе число</string>
     <string name="result_hint">Результат будет здесь</string>
     <string name="err_div_by_zero">Деление на ноль!</string>
+    <string name="arg3_hint">Введите третье число</string>
+    <string name="arg4_hint">Введите четвертое число</string>
+    <string name="round_math">Математическое округление</string>
+    <string name="round_half_even">Банковское округление</string>
+    <string name="round_down">Усечение</string>
 </resources>

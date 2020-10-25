@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="operations">
+        <item>@string/btn_add_text</item>
+        <item>@string/btn_sub_text</item>
+        <item>@string/btn_div_text</item>
+        <item>@string/btn_mul_text</item>
+    </string-array>
+
+    <string-array name="rounding_mode">
+        <item>@string/round_math</item>
+        <item>@string/round_half_even</item>
+        <item>@string/round_down</item>
+    </string-array>
+</resources>
