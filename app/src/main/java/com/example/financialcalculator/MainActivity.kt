@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
-
     private fun argPreprocess(edit: EditText): String {
         return edit.text.toString().trim().replace(',', '.')
     }
@@ -120,7 +119,6 @@ class MainActivity : AppCompatActivity() {
         twAnswerRounded.text = decimalFormatRounded.format(ans)
     }
 
-
     private fun operate(first: BigDecimal, second: BigDecimal, operation: Int): BigDecimal {
         return when (operation) {
             0 -> first + second
@@ -174,7 +172,6 @@ class MainActivity : AppCompatActivity() {
             setResult(abcd)
         }
     }
-
 
     private val decimalFormat = DecimalFormat()
     private val decimalFormatRounded = DecimalFormat()
