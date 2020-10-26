@@ -14,4 +14,5 @@
     <string name="round_math">Математическое округление</string>
     <string name="round_half_even">Банковское округление</string>
     <string name="round_down">Усечение</string>
+    <string name="result_rounded_hint">Округленный результат будет здесь</string>
 </resources>

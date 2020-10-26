@@ -62,21 +62,21 @@ class MainActivity : AppCompatActivity() {
         return s.replace(" ", "")
     }
 
-
     private fun initializeVars(): Boolean {
         var first = argPreprocess(edtArg1)
         var second = argPreprocess(edtArg2)
         var third = argPreprocess(edtArg3)
         var fourth = argPreprocess(edtArg4)
+
         val arguments = arrayOf(first, second, third, fourth)
 
         if (isAnyEmpty(*arguments)) {
-            twAnswer.text = getString(R.string.input_empty)
+            setResult(getString(R.string.input_empty))
             return false
         }
 
         if (!argCheckPattern(*arguments)) {
-            twAnswer.text = getString(R.string.input_err) // + " - pattern!!!"
+            setResult(getString(R.string.input_err)) // + " - pattern!!!"
             return false
         } else {
             first = removeSpaces(first)
@@ -86,18 +86,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         try {
-            a = BigDecimal(first).setScale(6)
-            b = BigDecimal(second).setScale(6)
-            c = BigDecimal(third).setScale(6)
-            d = BigDecimal(fourth).setScale(6)
+            a = BigDecimal(first).setScale(10, RoundingMode.HALF_UP)
+            b = BigDecimal(second).setScale(10, RoundingMode.HALF_UP)
+            c = BigDecimal(third).setScale(10, RoundingMode.HALF_UP)
+            d = BigDecimal(fourth).setScale(10, RoundingMode.HALF_UP)
 
         } catch (e: Exception) {
-            twAnswer.text = getString(R.string.input_err)
+            setResult(getString(R.string.input_err))
             return false
         }
 
         if (hasOverflow(a, b, c, d)) {
-            twAnswer.text = getString(R.string.input_overflow)
+            setResult(getString(R.string.input_overflow))
             return false
         }
 
@@ -108,6 +108,18 @@ class MainActivity : AppCompatActivity() {
         return spOps1.selectedItemPosition > spOps3.selectedItemPosition
     }
 
+    private fun setResult(s: String, clearRounded: Boolean = true) {
+        twAnswer.text = s
+        if (clearRounded) {
+            twAnswerRounded.text = ""
+        }
+    }
+
+    private fun setResult(ans: BigDecimal) {
+        twAnswer.text = decimalFormat.format(ans)
+        twAnswerRounded.text = decimalFormatRounded.format(ans)
+    }
+
 
     private fun operate(first: BigDecimal, second: BigDecimal, operation: Int): BigDecimal {
         return when (operation) {
@@ -115,7 +127,7 @@ class MainActivity : AppCompatActivity() {
             1 -> first - second
             2 -> {
                 if (second.compareTo(BigDecimal.ZERO) == 0) {
-                    twAnswer.text = getString(R.string.err_div_by_zero)
+                    setResult(getString(R.string.err_div_by_zero))
                     throw Exception(getString(R.string.err_div_by_zero))
                 } else {
                     first / second
@@ -126,7 +138,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun buttonClickHandler(v: View) {
+    private fun btnResClickHandler(v: View) {
         if (initializeVars()) {
             val bc: BigDecimal
             try {
@@ -155,16 +167,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (hasOverflow(abcd)) {
-                twAnswer.text = getString(R.string.res_overflow)
+                setResult(getString(R.string.res_overflow))
                 return
             }
 
-            twAnswer.text = decimalFormat.format(abcd)
+            setResult(abcd)
         }
     }
 
 
     private val decimalFormat = DecimalFormat()
+    private val decimalFormatRounded = DecimalFormat()
 
     private fun initializeDecimalFormat() {
         val dfs = DecimalFormatSymbols(Locale.getDefault())
@@ -172,21 +185,25 @@ class MainActivity : AppCompatActivity() {
 
         decimalFormat.maximumFractionDigits = 6
         decimalFormat.minimumFractionDigits = 0
-
         decimalFormat.isGroupingUsed = true
         decimalFormat.roundingMode = RoundingMode.HALF_UP
-
         decimalFormat.decimalFormatSymbols = dfs
+
+        decimalFormatRounded.maximumFractionDigits = 0
+        decimalFormatRounded.isGroupingUsed = true
+        decimalFormat.roundingMode = RoundingMode.HALF_UP
+        decimalFormatRounded.decimalFormatSymbols = dfs
     }
 
     private fun changeRoundingMode(position: Int) {
-        decimalFormat.roundingMode =
+        decimalFormatRounded.roundingMode =
             when (position) {
                 0 -> RoundingMode.HALF_UP
                 1 -> RoundingMode.HALF_EVEN
                 2 -> RoundingMode.DOWN
                 else -> RoundingMode.UNNECESSARY
             }
+        btnResClickHandler(btnRes)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -208,7 +225,6 @@ class MainActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        btnRes.setOnClickListener(this::buttonClickHandler)
+        btnRes.setOnClickListener(this::btnResClickHandler)
     }
-
 }

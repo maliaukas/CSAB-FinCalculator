@@ -11,6 +11,7 @@
     <string name="arg3_hint">Enter the third number</string>
     <string name="arg4_hint">Enter the fourth number</string>
     <string name="result_hint">The result will appear here</string>
+    <string name="result_rounded_hint">The rounded result will appear here</string>
     <string name="btn_add_text" translatable="false">+</string>
     <string name="btn_sub_text" translatable="false">-</string>
     <string name="btn_mul_text" translatable="false">*</string>
